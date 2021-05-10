@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://an123:an123@fptblog.pkzav.mongodb.net/MERN?retryWrites=true&w=majority"
+}

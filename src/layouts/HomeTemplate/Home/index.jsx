@@ -1,5 +1,5 @@
 import { Box, Button, Grid, Typography } from '@material-ui/core';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useStyles } from './styles';
 import content1 from '../../../assets/content1.jpeg';
 import content2 from '../../../assets/content2.jpeg';
@@ -7,9 +7,22 @@ import content3 from '../../../assets/content3.jpeg';
 import content4 from '../../../assets/content4.jpeg';
 import content5 from '../../../assets/content5.jpeg';
 import content6 from '../../../assets/content6.jpeg';
+import axios from 'axios';
 
 const Home = () => {
   const classes = useStyles();
+
+  useEffect(() => {
+    testApi();
+  }, []);
+
+  const testApi = async () => {
+    const { data, status } = await axios({
+      url: 'http://192.168.0.104:5000/api/posts',
+      method: 'GET',
+    });
+    console.log(data);
+  };
 
   return (
     <Box className={classes.container}>
