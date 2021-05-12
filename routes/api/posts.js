@@ -54,6 +54,7 @@ router.get('/:slug', async (req, res) => {
     const posts = await Post.findOne({
       slug: req.params.slug,
     });
+    if (!posts) return res.status(500).send('Không tìm thấy bài viết');
     res.json(posts);
   } catch (err) {
     console.error(err.message);

@@ -16,10 +16,27 @@ const Header = () => {
         </Grid>
         <Grid container item xs={10} spacing={0}>
           <Box className={classes.navContainer}>
-            <Typography className={classes.navItemText}>FPT Share</Typography>
-            <Typography className={classes.navItemText}>UI/UX</Typography>
-            <Typography className={classes.navItemText}>Frontend</Typography>
-            <Typography className={classes.navItemText}>Backend</Typography>
+            <NavLink
+              to="/fpt"
+              activeClassName={classes.activeNavItem}
+              className={classes.navItemText}
+            >
+              FPT Share
+            </NavLink>
+            <NavLink
+              to="/frontend"
+              activeClassName={classes.activeNavItem}
+              className={classes.navItemText}
+            >
+              Frontend
+            </NavLink>
+            <NavLink
+              to="/backend"
+              activeClassName={classes.activeNavItem}
+              className={classes.navItemText}
+            >
+              Backend
+            </NavLink>
           </Box>
         </Grid>
       </Grid>

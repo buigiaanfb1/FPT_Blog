@@ -5,6 +5,15 @@
   font-family: 'Roboto', sans-serif;
 }
 
+::-moz-selection {
+  /* Code for Firefox */
+  background: rgba(205, 118, 255, 0.5);
+}
+
+::selection {
+  background: rgba(205, 118, 255, 0.5);
+}
+
 body {
   color: #1a1b1f;
   font-size: 16px;

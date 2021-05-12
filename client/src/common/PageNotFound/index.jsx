@@ -1,5 +1,6 @@
 import { Typography } from '@material-ui/core';
 import React from 'react';
+import Relevant from '../../components/Relevant';
 import { useStyles } from './styles';
 
 const PageNotFound = () => {
@@ -9,6 +10,7 @@ const PageNotFound = () => {
       <Typography className={classes.title} variant="h2">
         Oops! Trang bạn tìm không tồn tại
       </Typography>
+      <Relevant />
     </div>
   );
 };

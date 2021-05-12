@@ -1,16 +1,9 @@
 import { Box, Button, Grid, Typography } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useStyles } from './styles';
-import content1 from '../../../assets/content1.jpeg';
-import content2 from '../../../assets/content2.jpeg';
-import content3 from '../../../assets/content3.jpeg';
-import content4 from '../../../assets/content4.jpeg';
-import content5 from '../../../assets/content5.jpeg';
-import content6 from '../../../assets/content6.jpeg';
-import axios from 'axios';
-import { GET_ALL_POSTS_REQUESTED_SAGA } from './modules/redux/constants';
 import { Link } from 'react-router-dom';
+
 import parse from 'html-react-parser';
 
 const Home = () => {
@@ -18,17 +11,6 @@ const Home = () => {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.PostsReducer.posts);
   const [limit, setLimit] = useState(7);
-  console.log(limit);
-
-  useEffect(() => {
-    handleFetchPosts();
-  }, []);
-
-  const handleFetchPosts = () => {
-    dispatch({
-      type: GET_ALL_POSTS_REQUESTED_SAGA,
-    });
-  };
 
   const handleRenderFirstPost = () => {
     if (posts && posts.length > 0) {
@@ -46,13 +28,13 @@ const Home = () => {
                   <Grid item xs={5}>
                     <Box className={classes.wrapperContent}>
                       <Typography className={classes.date}>
-                        April 13, 2021
+                        {new Date(posts[i]?.date).toLocaleDateString('en-GB')}
                       </Typography>
                       <Typography className={classes.titleFirstContent}>
                         {posts[i].title}
                       </Typography>
                       <Typography className={classes.description}>
-                        {posts[i].summary + '...'}
+                        {posts[i].summary}
                       </Typography>
                     </Box>
                   </Grid>
@@ -86,13 +68,15 @@ const Home = () => {
                     <Grid item xs={12}>
                       <Box className={classes.wrapperContentText}>
                         <Typography className={classes.date}>
-                          April 13, 2021
+                          {new Date(posts?.date).toLocaleDateString('en-GB')}
                         </Typography>
                         <Typography className={classes.titleContent}>
                           {post.title}
                         </Typography>
                         <Typography className={classes.description}>
-                          {post.summary + '...'}
+                          {post.summary.length > 150
+                            ? post.summary.slice(0, 127) + '...'
+                            : post.summary}
                         </Typography>
                       </Box>
                     </Grid>

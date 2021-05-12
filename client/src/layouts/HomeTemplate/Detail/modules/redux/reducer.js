@@ -8,7 +8,7 @@ import {
 const initialState = {
   postDetail: null,
   isLoading: false,
-  errors: [],
+  errors: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -25,7 +25,7 @@ export default (state = initialState, { type, payload }) => {
 
     case GET_DETAIL_FAILED:
       state.isLoading = false;
-      state.errors = payload;
+      state.errors = true;
       return { ...state };
 
     case CLEAN_UP_DETAIL_POST:

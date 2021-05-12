@@ -47,4 +47,8 @@ export const useStyles = makeStyles((theme) => ({
     color: '#ccc',
     marginBottom: '16px',
   },
+
+  link: {
+    textDecoration: 'none',
+  },
 }));

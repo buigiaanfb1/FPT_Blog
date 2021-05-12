@@ -9,7 +9,6 @@ import { STATUS_CODE } from '../../../../../common/constants';
 import { getDetailService } from '../services/DetailServices';
 
 function* getDetailRequestedFromHomeCmp({ payload }) {
-  console.log(payload);
   yield put({
     type: GET_DETAIL_REQUESTED,
   });
