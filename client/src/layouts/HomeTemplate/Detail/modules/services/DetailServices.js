@@ -6,3 +6,11 @@ export function getDetailService(slug) {
     method: 'GET',
   });
 }
+
+export function postCommentService({ newComment, slug }) {
+  return axios({
+    url: `/api/posts/comments/${slug}`,
+    method: 'POST',
+    data: newComment,
+  });
+}

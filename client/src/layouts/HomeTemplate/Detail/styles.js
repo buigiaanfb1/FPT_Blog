@@ -90,6 +90,14 @@ export const useStyles = makeStyles((theme) => ({
     color: '#323947',
   },
 
+  hr: {
+    width: '100%',
+    margin: '3rem auto 0 auto',
+    maxWidth: '880px',
+    height: '1px',
+    backgroundColor: '#B5B5B5',
+  },
+
   contents: {
     fontSize: 'inherit',
   },

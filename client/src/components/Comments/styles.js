@@ -13,7 +13,7 @@ export const useStyles = makeStyles((theme) => ({
 
   titleDiscussion: {
     fontWeight: '700',
-    fontSize: '24px',
+    fontSize: '28px',
   },
 
   userComment: {
@@ -41,15 +41,66 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   username: {
-    fontWeight: '500',
+    fontWeight: '700',
     fontSize: '16px',
   },
 
   date: {
-    fontSize: '14px',
+    fontSize: '13px',
+    fontWeight: '500',
+    opacity: '0.9',
+    display: 'block',
   },
 
   content: {
     padding: '0.5rem 0',
+  },
+
+  pending: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+
+  iconNewComment: {
+    fontSize: '20px',
+    color: '#FC9007',
+    margin: '0rem 0.2rem',
+  },
+
+  wrapperPending: {
+    display: 'flex',
+    alignItems: 'center',
+    marginLeft: '0.5rem',
+  },
+
+  newComment: {
+    fontWeight: '500',
+    fontSize: '14px',
+    color: '#FC9007',
+  },
+
+  boxMeAvatar: {
+    width: '60px',
+    height: '60px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background:
+      '-webkit-linear-gradient(left top, rgb(216,15,233) 0%, rgb(242,36,23) 100%)',
+    transition: 'all 0.4s ease-in-out',
+    borderRadius: '2000px',
+  },
+
+  containerAvatars: {
+    border: '4px solid #e3e6ec',
+    borderRadius: '50%',
+    backgroundColor: '#e3e6ec',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+
+  avatarMeUser: {
+    borderRadius: '50%',
   },
 }));

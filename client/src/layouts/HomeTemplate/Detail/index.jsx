@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   CLEAN_UP_DETAIL_POST,
   GET_DETAIL_REQUESTED_SAGA,
+  POST_NEW_COMMENT_REQUESTED_SAGA,
 } from './modules/redux/constants';
 import { useHistory } from 'react-router-dom';
 import parse from 'html-react-parser';
@@ -20,6 +21,9 @@ const Detail = () => {
   const classes = useStyles();
   const post = useSelector((state) => state.PostDetailReducer.postDetail);
   const errors = useSelector((state) => state.PostDetailReducer.errors);
+  const newComment = useSelector(
+    (state) => state.PostDetailReducer.newComments
+  );
 
   useEffect(() => {
     let slug = history.location.pathname;
@@ -36,9 +40,19 @@ const Detail = () => {
   }, []);
 
   useEffect(() => {
-    console.log('highlightAll');
     Prism.highlightAll();
-  });
+  }, [post]);
+
+  useEffect(() => {
+    if (newComment !== null) {
+      let slugFake = history.location.pathname;
+      let slug = slugFake.slice(1);
+      dispatch({
+        type: POST_NEW_COMMENT_REQUESTED_SAGA,
+        payload: { newComment, slug },
+      });
+    }
+  }, [newComment]);
 
   if (errors) {
     return <PageNotFound />;
@@ -67,8 +81,9 @@ const Detail = () => {
             {post?.text ? parse(post?.text) : null}
           </Typography>
         </Box>
+        <div className={classes.hr}></div>
       </div>
-      <Comments />
+      <Comments comments={post?.comments} />
       <Relevant />
     </div>
   );

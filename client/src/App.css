@@ -25,3 +25,27 @@ body {
   background-position: top center;
   background-size: cover;
 }
+
+blockquote {
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 40px;
+  margin-inline-end: 40px;
+}
+
+ul {
+  padding-left: 40px;
+}
+
+li {
+  padding-right: 40x;
+}
+
+.nameUserComment {
+  background: linear-gradient(to right, rgb(241, 121, 235), #c296fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.avatarUserComment {
+  border-radius: 100%;
+}

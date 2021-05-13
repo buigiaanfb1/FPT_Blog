@@ -68,7 +68,7 @@ const Home = () => {
                     <Grid item xs={12}>
                       <Box className={classes.wrapperContentText}>
                         <Typography className={classes.date}>
-                          {new Date(posts?.date).toLocaleDateString('en-GB')}
+                          {new Date(post.date).toLocaleDateString('en-GB')}
                         </Typography>
                         <Typography className={classes.titleContent}>
                           {post.title}
