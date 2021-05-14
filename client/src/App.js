@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import ScrollToTop from './common/ScrollToTop';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_ALL_POSTS_REQUESTED_SAGA } from './layouts/HomeTemplate/Home/modules/redux/constants';
+import AdminTemplate from './layouts/AdminTemplate';
 
 function App() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Switch>
-        <Route exact={true} path="/admin/dashboard" component={Dashboard} />
+        <Route exact={true} path="/admin/dashboard" component={AdminTemplate} />
         {showLayoutHome(routesHome)}
       </Switch>
     </BrowserRouter>

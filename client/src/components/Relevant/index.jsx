@@ -26,7 +26,11 @@ const Relevant = () => {
                 <Grid container spacing={0}>
                   <Grid item xs={12}>
                     <Box className={classes.imgFirstContent}>
-                      <img src={post.thumbnail} width="100%" height="215px" />
+                      <img
+                        src={`https://res.cloudinary.com/cloudassetbuffet/image/upload/${post.thumbnail}`}
+                        width="100%"
+                        height="215px"
+                      />
                     </Box>
                   </Grid>
                   <Grid item xs={12}>

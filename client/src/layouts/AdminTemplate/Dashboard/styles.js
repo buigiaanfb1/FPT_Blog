@@ -65,8 +65,7 @@ export const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
   },
   container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    padding: '7rem 1rem 2rem 1rem',
   },
   paper: {
     padding: theme.spacing(2),
@@ -76,5 +75,19 @@ export const useStyles = makeStyles((theme) => ({
   },
   fixedHeight: {
     height: 240,
+  },
+
+  noteUpload: {
+    fontWeight: '500',
+  },
+
+  wrapperButton: {
+    padding: '1rem 1rem',
+    border: '1px solid #000',
+    borderRadius: '8px',
+    marginBottom: '1rem',
+  },
+  buttonUpload: {
+    // marginTop: '5rem 0',
   },
 }));

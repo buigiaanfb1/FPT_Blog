@@ -1,17 +1,43 @@
 import { makeStyles } from '@material-ui/core';
 
 export const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+
   bgColor: {
     width: '100%',
     backgroundColor: '#e3e6ec',
+    position: 'relative',
+  },
+
+  wrapperLike: {
+    position: 'sticky',
+    top: '0',
+    left: '10%',
+    paddingTop: '100px',
+    paddingBottom: '100px',
+    margin: 'initial',
+    zIndex: '1',
+    width: '20px',
+  },
+
+  item: {
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'column',
   },
 
   container: {
     margin: '0 auto',
-    maxWidth: '1120px',
+    maxWidth: '1280px',
+    position: 'relative',
   },
+
   titleContainer: {
-    marginTop: '7rem',
+    marginTop: '2rem',
   },
   title: {
     fontSize: '100px',
@@ -50,13 +76,6 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: 'flex-start',
   },
 
-  imgAuthor: {
-    width: '48px',
-    height: '48px',
-    height: '100%',
-    borderRadius: '2000px',
-  },
-
   boxName: {
     marginLeft: '0.6rem',
   },
@@ -74,11 +93,11 @@ export const useStyles = makeStyles((theme) => ({
 
   date: {
     fontWeight: '500',
-    fontSize: '12px',
-    lineHeight: '12px',
+    fontSize: '15px',
+    lineHeight: '15px',
     letterSpacing: '0.5px',
     color: '#000',
-    opacity: '0.5',
+    opacity: '0.7',
     marginTop: '10px',
   },
 

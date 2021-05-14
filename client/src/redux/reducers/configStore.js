@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import PostsReducer from './../../layouts/HomeTemplate/Home/modules/redux/reducer';
 import PostDetailReducer from './../../layouts/HomeTemplate/Detail/modules/redux/reducer';
+import AdminReducer from './../../layouts/AdminTemplate/modules/reducer';
 import rootSaga from './../sagas/rootSaga';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -12,6 +13,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
   PostsReducer,
   PostDetailReducer,
+  AdminReducer,
 });
 const store = createStore(
   rootReducer,

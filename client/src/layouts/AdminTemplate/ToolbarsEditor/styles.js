@@ -10,4 +10,8 @@ export const useStyles = makeStyles((theme) => ({
     color: '#fff',
     backgroundColor: '#000',
   },
+
+  title: {
+    margin: '0.5rem 0',
+  },
 }));

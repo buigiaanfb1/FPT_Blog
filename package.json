@@ -13,6 +13,8 @@
   "license": "MIT",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cloudinary-core": "^2.11.4",
+    "cloudinary-react": "^1.7.0",
     "config": "^3.3.6",
     "express": "^4.17.1",
     "express-validator": "^6.10.1",

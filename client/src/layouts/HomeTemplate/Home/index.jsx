@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useStyles } from './styles';
 import { Link } from 'react-router-dom';
+import { Image } from 'cloudinary-react';
 
 import parse from 'html-react-parser';
 
@@ -22,7 +23,12 @@ const Home = () => {
                 <Grid container spacing={5}>
                   <Grid item xs={7}>
                     <Box className={classes.imgFirstContent}>
-                      <img src={parse(posts[i].thumbnail)} width="100%" />
+                      <img
+                        src={`https://res.cloudinary.com/cloudassetbuffet/image/upload/${posts[i].thumbnail}`}
+                        quality="auto"
+                        width="100%"
+                        height="360px"
+                      />
                     </Box>
                   </Grid>
                   <Grid item xs={5}>
@@ -49,17 +55,17 @@ const Home = () => {
 
   const handleRenderAllPosts = () => {
     if (posts && posts.length > 0) {
-      return posts.map((post, index) => {
+      return posts.slice(0, limit).map((post, index) => {
         if (index > 0) {
           return (
-            <Grid container item xs={4} spacing={0}>
+            <Grid container item md={4} xs={12} spacing={0}>
               <Link to={`/${post.slug}`} className={classes.link}>
                 <Box className={classes.wrapperContentAll}>
                   <Grid container spacing={0}>
                     <Grid item xs={12}>
                       <Box className={classes.imgFirstContent}>
                         <img
-                          src={parse(post.thumbnail)}
+                          src={`https://res.cloudinary.com/cloudassetbuffet/image/upload/${post.thumbnail}`}
                           width="100%"
                           height="190px"
                         />
@@ -106,7 +112,7 @@ const Home = () => {
             variant="contained"
             color="secondary"
             className={classes.xemThemBtn}
-            onClick={() => setLimit(limit + 7)}
+            onClick={() => setLimit(limit + 6)}
           >
             Xem thêm
           </Button>

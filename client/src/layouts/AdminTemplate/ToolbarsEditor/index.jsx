@@ -3,6 +3,7 @@ import { Editor } from '@tinymce/tinymce-react';
 import { useStyles } from './styles';
 import { Button, TextField } from '@material-ui/core';
 import axios from 'axios';
+import ModalGallery from '../Dashboard/ModalGallery';
 
 const ToolbarsEditor = () => {
   const [content, setContent] = useState({
@@ -39,6 +40,13 @@ const ToolbarsEditor = () => {
     });
   };
 
+  const handleImage = (pictureJSON) => {
+    setContent({
+      ...content,
+      thumbnail: pictureJSON,
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { data, status } = await postDataAxios();
@@ -46,7 +54,7 @@ const ToolbarsEditor = () => {
   };
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
-      <h3>Title</h3>
+      <h3 className={classes.title}>Title</h3>
       <TextField
         id="outlined-basic"
         variant="outlined"
@@ -56,7 +64,7 @@ const ToolbarsEditor = () => {
         onChange={(e) => handleChange(e)}
       />
       <br />
-      <h3>Summary</h3>
+      <h3 className={classes.title}>Summary</h3>
       <TextField
         id="outlined-basic"
         variant="outlined"
@@ -66,7 +74,7 @@ const ToolbarsEditor = () => {
         onChange={(e) => handleChange(e)}
       />
       <br />
-      <h3>Slug</h3>
+      <h3 className={classes.title}>Slug</h3>
       <TextField
         id="outlined-basic"
         variant="outlined"
@@ -76,17 +84,10 @@ const ToolbarsEditor = () => {
         onChange={(e) => handleChange(e)}
       />
       <br />
-      <h3>Thumbnail</h3>
-      <TextField
-        id="outlined-basic"
-        variant="outlined"
-        fullWidth
-        name="thumbnail"
-        placeholder="Picture"
-        onChange={(e) => handleChange(e)}
-      />
+      <h3 className={classes.title}>Thumbnail</h3>
+      <ModalGallery handleImage={handleImage} />
       <br />
-      <h3>Content</h3>
+      <h3 className={classes.title}>Content</h3>
       <Editor
         apiKey="v5o2pa741vownqney7esv5efwtt657k8j38w8k2womugtuyg"
         initialValue="Made with <3 from Gia An"
