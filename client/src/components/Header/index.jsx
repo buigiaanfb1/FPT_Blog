@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@material-ui/core';
+import { Box, Grid } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useStyles } from './styles';
 import logo from './../../assets/logo.png';

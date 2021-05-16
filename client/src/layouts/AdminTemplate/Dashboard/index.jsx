@@ -19,7 +19,6 @@ import { useStyles } from './styles';
 import ToolbarsEditor from './../ToolbarsEditor';
 import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
-import { Redirect } from 'react-router';
 
 function Copyright() {
   return (

@@ -90,13 +90,11 @@ router.post(
       });
     }
     const { email, password } = req.body;
-    console.log(email);
     try {
       let admin = await Admin.findOne({ email });
       if (!admin) {
         return res.status(400).json({ msg: 'Sai tài khoản hoặc mật khẩu' });
       }
-      console.log(admin);
 
       const isMatch = await bcrypt.compare(password, admin.password);
       if (!isMatch) {
