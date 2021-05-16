@@ -31,10 +31,3 @@ export const routesHome = [
     component: Home,
   },
 ];
-
-export const routesAdmin = [
-  {
-    exact: false,
-    path: '/admin',
-  },
-];

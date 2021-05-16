@@ -37,22 +37,24 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   titleContainer: {
-    marginTop: '2rem',
+    marginTop: '0rem',
   },
   title: {
-    fontSize: '100px',
-    lineHeight: '100px',
+    fontSize: '80px',
+    lineHeight: '80px',
     letterSpacing: '-1px',
     textAlign: 'center',
     fontWeight: '500',
     wordSpacing: '-1px',
+    padding: '1rem',
+    wordBreak: 'break-word',
   },
 
   authorContainer: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    margin: '25px 50px 50px 1.5rem',
+    margin: '0.2rem 50px 1rem 1.5rem',
   },
 
   boxAvatars: {
@@ -106,6 +108,7 @@ export const useStyles = makeStyles((theme) => ({
     margin: '0 auto',
     fontSize: '20px',
     lineHeight: '35px',
+    padding: '0 0.5rem',
     color: '#323947',
   },
 

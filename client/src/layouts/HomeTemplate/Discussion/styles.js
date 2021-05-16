@@ -3,10 +3,10 @@ import { makeStyles } from '@material-ui/core';
 export const useStyles = makeStyles((theme) => ({
   container: {
     margin: '0 auto',
-    maxHeight: '600px',
+    height: '60vh',
     backgroundColor: '#000',
     opacity: '0.9',
-    overflowY: 'auto',
+    overflowY: 'overlay',
     color: '#fff',
     position: 'relative',
   },

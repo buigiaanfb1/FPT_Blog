@@ -1,11 +1,6 @@
 import { makeStyles } from '@material-ui/core';
 
 export const useStyles = makeStyles((theme) => ({
-  container: {
-    position: 'relative',
-    display: 'initial',
-  },
-
   wrapperLike: {
     position: '-webkit-sticky',
     position: 'sticky',
@@ -13,7 +8,6 @@ export const useStyles = makeStyles((theme) => ({
     left: '3%',
     paddingTop: '50px',
     paddingBottom: '100px',
-    // transform: 'translate(-1%, 0)',
     margin: 'initial',
     width: '20px',
   },

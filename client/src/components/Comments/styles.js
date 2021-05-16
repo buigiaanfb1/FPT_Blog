@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
   container: {
     margin: '0 auto',
     maxWidth: '700px',
-    padding: '3rem 0',
+    padding: '3rem 1rem',
   },
 
   titleDiscussion: {
@@ -31,7 +31,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   otherUsersComment: {
-    padding: '2rem 0 0 0',
+    padding: '0.5rem 0 0 0',
   },
 
   otherUsersWrapper: {

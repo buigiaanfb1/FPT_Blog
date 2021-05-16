@@ -80,8 +80,8 @@ const Comments = ({ comments }) => {
         return (
           <Box className={classes.otherUsersComment}>
             <div className={classes.root}>
-              <Grid container spacing={6}>
-                <Grid item xs={1}>
+              <Grid container spacing={0}>
+                <Grid item sm={1} xs={2}>
                   <img
                     src={comment.avatar ? comment.avatar : defaultAvatar}
                     className={'avatarUserComment'}
@@ -89,7 +89,7 @@ const Comments = ({ comments }) => {
                     height="50px"
                   />
                 </Grid>
-                <Grid item xs={11}>
+                <Grid item sm={11} xs={10}>
                   <Box className={classes.otherUsersWrapper}>
                     <Box className={classes.pending}>
                       <Typography
@@ -128,8 +128,8 @@ const Comments = ({ comments }) => {
       <Typography className={classes.titleDiscussion}>Comments</Typography>
       <Box className={classes.userComment}>
         <div className={classes.root}>
-          <Grid container spacing={5}>
-            <Grid item xs={1}>
+          <Grid container spacing={0}>
+            <Grid item sm={1} xs={2}>
               <Box className={classes.boxMeAvatar}>
                 <Box className={classes.containerAvatars}>
                   <img
@@ -141,7 +141,7 @@ const Comments = ({ comments }) => {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={11}>
+            <Grid item sm={11} xs={10}>
               <Box style={{ padding: '0 0.5rem' }}>
                 <form onSubmit={(e) => handleSubmit(e)}>
                   <Grid container spacing={1}>
@@ -167,7 +167,7 @@ const Comments = ({ comments }) => {
                     </Grid>
                     {open ? (
                       <>
-                        <Grid item xs={6}>
+                        <Grid item sm={6} xs={8}>
                           <TextField
                             id="outlined-basic"
                             name="name"
@@ -182,7 +182,7 @@ const Comments = ({ comments }) => {
                             }}
                           />
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item sm={6} xs={4}>
                           <Box className={classes.buttonContainer}>
                             <Button
                               variant="contained"
@@ -190,11 +190,11 @@ const Comments = ({ comments }) => {
                               className={classes.button}
                               type="submit"
                             >
-                              Đăng bình luận nào!
+                              Đăng!
                             </Button>
                           </Box>
                         </Grid>
-                        <Grid item xs={6}>
+                        <Grid item sm={6} xs={8}>
                           <TextField
                             id="outlined-basic"
                             name="email"

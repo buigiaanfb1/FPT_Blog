@@ -3,6 +3,7 @@ const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const router = express.Router();
 const app = express();
+const auth = require('./../../middleware/auth');
 
 const Post = require('./../../models/Post');
 
@@ -12,6 +13,7 @@ const Post = require('./../../models/Post');
 router.post(
   '/',
   [
+    auth,
     check('title', 'Title is required').not().isEmpty(),
     check('summary', 'Summary is required').not().isEmpty(),
     check('thumbnail', 'Thumbnail is required').not().isEmpty(),

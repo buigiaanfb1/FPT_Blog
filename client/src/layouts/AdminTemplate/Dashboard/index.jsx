@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import clsx from 'clsx';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
@@ -17,8 +17,9 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import { useStyles } from './styles';
 import ToolbarsEditor from './../ToolbarsEditor';
-import ModalGallery from './ModalGallery';
+import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
+import { Redirect } from 'react-router';
 
 function Copyright() {
   return (
@@ -35,12 +36,36 @@ function Copyright() {
 
 const Dashboard = (props) => {
   const classes = useStyles();
+  let history = useHistory();
   const [open, setOpen] = React.useState(true);
+
+  useMemo(() => {
+    if (!localStorage.getItem('ADMIN')) {
+      history.replace('/admin');
+    }
+  }, []);
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+  const handleCheckUpload = () => {
+    if (!localStorage.getItem('ADMIN')) {
+      return;
+    } else {
+      return (
+        <Button
+          className={classes.buttonUpload}
+          variant="contained"
+          color="primary"
+          onClick={() => props.beginUpload()}
+        >
+          UPLOAD IMAGE
+        </Button>
+      );
+    }
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -102,14 +127,7 @@ const Dashboard = (props) => {
                 <Typography className={classes.noteUpload}>
                   Gửi ảnh lên Cloudinary
                 </Typography>
-                <Button
-                  className={classes.buttonUpload}
-                  variant="contained"
-                  color="primary"
-                  onClick={() => props.beginUpload()}
-                >
-                  UPLOAD IMAGE
-                </Button>
+                {handleCheckUpload()}
               </Box>
               <ToolbarsEditor />
             </Grid>

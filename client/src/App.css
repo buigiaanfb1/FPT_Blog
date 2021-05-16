@@ -96,12 +96,14 @@ li {
 
 /* Handle on hover */
 *::-webkit-scrollbar-thumb:hover {
-  background: #8c00ff;
+  background: #5a00a3;
 }
 
 .linear-body {
-  background-image: url(./assets/linearGradient.png);
-  /* background-size: cover; */
+  background: url(./assets/linearGradient.png) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   background-attachment: fixed;
-  background-position: 100% 130%;
 }

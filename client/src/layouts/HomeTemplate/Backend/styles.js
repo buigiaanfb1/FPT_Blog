@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 
 export const useStyles = makeStyles((theme) => ({
   container: {
-    width: '1120px',
+    maxWidth: '1120px',
     margin: '2rem auto 2rem auto',
   },
   title: {

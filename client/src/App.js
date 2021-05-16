@@ -11,19 +11,23 @@ import AdminTemplate from './layouts/AdminTemplate';
 import { AnimatePresence } from 'framer-motion';
 import { Box, makeStyles } from '@material-ui/core';
 import TogetherUnite from './components/TogetherUnite';
+import Login from './layouts/AdminTemplate/Login';
+import { useMediaQuery } from 'react-responsive';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
     position: 'fixed',
-    bottom: '2rem',
+    bottom: `2rem`,
     right: '2rem',
     zIndex: '9999999',
   },
 }));
 
-function App() {
+const App = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
   const classes = useStyles();
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch({
       type: GET_ALL_POSTS_REQUESTED_SAGA,
@@ -43,14 +47,19 @@ function App() {
       });
     }
   };
+
   return (
     <BrowserRouter>
       <ScrollToTop />
       <AnimatePresence exitBeforeEnter>
-        <Box className={classes.modal}>
+        <Box
+          className={classes.modal}
+          style={{ zIndex: `500`, right: `${isMobile ? 1 : 2}rem` }}
+        >
           <TogetherUnite />
         </Box>
         <Switch>
+          <Route exact={true} path="/admin" component={Login} />
           <Route
             exact={true}
             path="/admin/dashboard"
@@ -61,6 +70,6 @@ function App() {
       </AnimatePresence>
     </BrowserRouter>
   );
-}
+};
 
 export default App;

@@ -7,9 +7,10 @@ const config = require('config');
 const router = express.Router();
 const app = express();
 const Admin = require('./../../models/Admin');
+const auth = require('./../../middleware/auth');
 
-// @route   POST api/users
-// @desc    Register user
+// @route   POST api/admin/register
+// @desc    Register admin
 // @access  Public
 router.post(
   '/register',
@@ -56,6 +57,57 @@ router.post(
         },
       };
 
+      jwt.sign(
+        payload,
+        config.get('jwtSecret'),
+        { expiresIn: 2 },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ token });
+        }
+      );
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  }
+);
+
+// @route   POST api/admin/login
+// @desc    Login admin
+// @access  Public
+router.post(
+  '/login',
+  [
+    check('email', 'Please include a valid email').isEmail(),
+    check('password', 'Password is required').exists(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({
+        errors: errors.array(),
+      });
+    }
+    const { email, password } = req.body;
+    console.log(email);
+    try {
+      let admin = await Admin.findOne({ email });
+      if (!admin) {
+        return res.status(400).json({ msg: 'Sai tài khoản hoặc mật khẩu' });
+      }
+      console.log(admin);
+
+      const isMatch = await bcrypt.compare(password, admin.password);
+      if (!isMatch) {
+        return res.status(400).json({ msg: 'Sai tài khoản hoặc mật khẩu' });
+      }
+
+      const payload = {
+        admin: {
+          id: admin.id,
+        },
+      };
       jwt.sign(
         payload,
         config.get('jwtSecret'),

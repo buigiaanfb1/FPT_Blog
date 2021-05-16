@@ -15,13 +15,14 @@ import PageNotFound from '../../../common/PageNotFound';
 import Prism from 'prismjs';
 import Comments from '../../../components/Comments';
 import Grid from '@material-ui/core/Grid';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import PostAction from './PostAction';
 import { motion } from 'framer-motion';
 import { pageAnimation } from '../../../common/animation';
+import { useMediaQuery } from 'react-responsive';
 
 const Detail = () => {
   const history = useHistory();
+  const isMobile = useMediaQuery({ query: '(max-width: 1100px)' });
   const dispatch = useDispatch();
   const classes = useStyles();
   let slug = history.location.pathname;
@@ -87,12 +88,22 @@ const Detail = () => {
         <div className={classes.container}>
           <div className={classes.root}>
             <Grid container spacing={0}>
-              <Grid item xs={1}>
-                <PostAction slug={slug} logo={logo} />
-              </Grid>
-              <Grid item xs={10}>
+              {!isMobile ? (
+                <Grid item xs={1}>
+                  <PostAction slug={slug} logo={logo} />
+                </Grid>
+              ) : (
+                ''
+              )}
+              <Grid item xs={!isMobile ? 10 : 12}>
                 <Box className={classes.titleContainer}>
-                  <Typography className={classes.title}>
+                  <Typography
+                    className={classes.title}
+                    style={{
+                      fontSize: `${!isMobile ? '80px' : '40px'}`,
+                      lineHeight: `${!isMobile ? '80px' : '40px'}`,
+                    }}
+                  >
                     {post?.title}
                   </Typography>
                 </Box>
@@ -110,7 +121,7 @@ const Detail = () => {
                 </Box>
                 <div className={classes.hr}></div>
               </Grid>
-              <Grid item xs={1}></Grid>
+              {!isMobile ? <Grid item xs={1}></Grid> : ''}
             </Grid>
           </div>
         </div>

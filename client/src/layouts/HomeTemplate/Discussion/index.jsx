@@ -12,6 +12,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useStyles } from './styles';
 import { Box, Button, Typography } from '@material-ui/core';
+import { useMediaQuery } from 'react-responsive';
 
 firebase.initializeApp({
   apiKey: 'AIzaSyCw8k1hNqDdseMcdGuR_aM6xu7iun5ZDBY',
@@ -46,9 +47,14 @@ function SignIn() {
 }
 
 function SignOut() {
+  const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
   const classes = useStyles();
   return (
-    <button onClick={() => auth.signOut()} className={classes.signOutContainer}>
+    <button
+      onClick={() => auth.signOut()}
+      className={classes.signOutContainer}
+      style={{ top: `${isMobile ? 1 : 2}rem`, right: `${isMobile ? 1 : 2}rem` }}
+    >
       <FontAwesomeIcon icon={faSignOutAlt} className={classes.buttonSignOut} />
     </button>
   );

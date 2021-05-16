@@ -4,8 +4,14 @@ import { useStyles } from './styles';
 import { Button, TextField } from '@material-ui/core';
 import axios from 'axios';
 import ModalGallery from '../Dashboard/ModalGallery';
+import Swal from 'sweetalert2';
 
 const ToolbarsEditor = () => {
+  let token;
+  if (localStorage.getItem('ADMIN')) {
+    const local = JSON.parse(localStorage.getItem('ADMIN'));
+    token = local.token;
+  }
   const [content, setContent] = useState({
     title: '',
     summary: '',
@@ -28,6 +34,9 @@ const ToolbarsEditor = () => {
       url: `/api/posts`,
       method: 'POST',
       data: content,
+      headers: {
+        'x-auth-token': token,
+      },
     });
   };
 
@@ -48,7 +57,24 @@ const ToolbarsEditor = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { data, status } = await postDataAxios();
+    try {
+      const { data, status } = await postDataAxios();
+      if (status === 200) {
+        Swal.fire({
+          title: 'Thành công',
+          text: 'Bài viết đã được công khai',
+          icon: 'success',
+          confirmButtonText: 'Cool',
+        });
+      }
+    } catch (err) {
+      Swal.fire({
+        title: 'Error!',
+        text: `${err.response.statusText}`,
+        icon: 'error',
+        confirmButtonText: 'Cool',
+      });
+    }
   };
   return (
     <form onSubmit={(e) => handleSubmit(e)}>

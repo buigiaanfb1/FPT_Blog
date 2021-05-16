@@ -77,37 +77,37 @@ const PostAction = ({ slug, logo }) => {
   };
 
   return (
-    <div className={classes.container}>
-      <Box className={classes.wrapperLike}>
-        <Box className={classes.item}>
-          <Box className={classes.boxAvatars}>
-            <Box className={classes.containerAvatars}>
-              <img src={logo} className={classes.imgAuthor} />
-            </Box>
+    // <div className={classes.container}>
+    <Box className={classes.wrapperLike}>
+      <Box className={classes.item}>
+        <Box className={classes.boxAvatars}>
+          <Box className={classes.containerAvatars}>
+            <img src={logo} className={classes.imgAuthor} />
           </Box>
-          <Box style={{ marginTop: '1.5rem' }}>
-            <Box
-              onClick={() => handleClickHeart()}
-              className={
-                isHeart
-                  ? `already-heart-container`
-                  : `${classes.iconContainerHeart} container-heart`
-              }
-            >
-              <FavoriteBorderIcon className={classes.iconHeart} />
-            </Box>
-            <Box
-              className={`${classes.iconContainerFacebook} container-facebook`}
-            >
-              <FontAwesomeIcon
-                icon={faFacebookF}
-                className={`${classes.iconFacebook} ${classes.icon}`}
-              />
-            </Box>
+        </Box>
+        <Box style={{ marginTop: '1.5rem' }}>
+          <Box
+            onClick={() => handleClickHeart()}
+            className={
+              isHeart
+                ? `already-heart-container`
+                : `${classes.iconContainerHeart} container-heart`
+            }
+          >
+            <FavoriteBorderIcon className={classes.iconHeart} />
+          </Box>
+          <Box
+            className={`${classes.iconContainerFacebook} container-facebook`}
+          >
+            <FontAwesomeIcon
+              icon={faFacebookF}
+              className={`${classes.iconFacebook} ${classes.icon}`}
+            />
           </Box>
         </Box>
       </Box>
-    </div>
+    </Box>
+    // </div>
   );
 };
 

@@ -20,7 +20,7 @@ const Relevant = () => {
       );
       return arrPostRandom.map((post) => {
         return (
-          <Grid container item xs={4}>
+          <Grid item xs={12} sm={6} md={4}>
             <Link to={`/${post.slug}`} className={classes.link}>
               <Box className={classes.wrapperContentAll}>
                 <Grid container spacing={0}>
@@ -36,7 +36,7 @@ const Relevant = () => {
                   <Grid item xs={12}>
                     <Box className={classes.wrapperContentText}>
                       <Typography className={classes.date}>
-                        April 13, 2021
+                        {new Date(post.date).toLocaleDateString('en-GB')}
                       </Typography>
                       <Typography className={classes.titleContent}>
                         {post.title}
@@ -61,7 +61,7 @@ const Relevant = () => {
         </Box>
         <Box>
           <div className={classes.root}>
-            <Grid container spacing={5}>
+            <Grid container spacing={0}>
               {handleRenderPostRelevant()}
             </Grid>
           </div>

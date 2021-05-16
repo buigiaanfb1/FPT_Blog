@@ -7,7 +7,11 @@ export const useStyles = makeStyles((theme) => ({
   bgColor: {
     backgroundColor: '#000',
     width: '100%',
-    marginTop: '100px',
+    marginTop: '0',
+  },
+
+  wrapperContentAll: {
+    padding: '1rem',
   },
 
   container: {
@@ -22,6 +26,7 @@ export const useStyles = makeStyles((theme) => ({
     lineHeight: '40px',
     marginBottom: '40px',
     fontWeight: '500',
+    padding: '0 1rem',
   },
 
   imgFirstContent: {

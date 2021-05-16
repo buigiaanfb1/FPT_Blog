@@ -4,14 +4,13 @@ export const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    outline: 'none',
   },
   paper: {
-    backgroundColor: 'rgba(37,36,39, 0.95)',
-    boxShadow: theme.shadows[5],
-    // padding: theme.spacing(2, 4, 3),
+    backgroundColor: 'transparent',
     width: '80%',
-    maxHeight: '90%',
-    // overflowY: 'auto',
+    maxHeight: '80%',
+    outline: 'none',
   },
 
   containerButton: {

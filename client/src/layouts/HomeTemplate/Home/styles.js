@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 
 export const useStyles = makeStyles((theme) => ({
   container: {
-    width: '1120px',
+    maxWidth: '1120px',
     margin: '5rem auto 2rem auto',
   },
   root: {
@@ -11,6 +11,11 @@ export const useStyles = makeStyles((theme) => ({
 
   wrapperFirstContent: {
     cursor: 'pointer',
+    padding: '1rem',
+  },
+
+  wrapperContent: {
+    padding: '1rem',
   },
 
   imgFirstContent: {
@@ -19,12 +24,8 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
 
-  wrapperContent: {
-    padding: '10px 20px 40px 0px',
-  },
-
   wrapperContentAll: {
-    padding: '15px 10px 10px 0px',
+    padding: '1rem',
     cursor: 'pointer',
   },
 
@@ -53,14 +54,6 @@ export const useStyles = makeStyles((theme) => ({
     opacity: '0.7',
     fontWeight: '500',
     letterSpacing: '0.4px',
-  },
-
-  wrapperContent: {
-    padding: '10px 20px 40px 0px',
-  },
-
-  wrapperContentText: {
-    padding: '0px',
   },
 
   titleContent: {
