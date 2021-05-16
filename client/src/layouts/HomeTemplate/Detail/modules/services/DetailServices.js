@@ -14,3 +14,17 @@ export function postCommentService({ newComment, slug }) {
     data: newComment,
   });
 }
+
+export function putLikeService({ putSlug }) {
+  return axios({
+    url: `/api/posts/like/${putSlug}`,
+    method: 'PUT',
+  });
+}
+
+export function putUnlikeService({ putSlug }) {
+  return axios({
+    url: `/api/posts/unlike/${putSlug}`,
+    method: 'PUT',
+  });
+}

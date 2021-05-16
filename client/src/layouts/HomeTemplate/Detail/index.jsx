@@ -16,14 +16,14 @@ import Prism from 'prismjs';
 import Comments from '../../../components/Comments';
 import Grid from '@material-ui/core/Grid';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import PostAction from './PostAction';
+import { motion } from 'framer-motion';
+import { pageAnimation } from '../../../common/animation';
+
 const Detail = () => {
   const history = useHistory();
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [isHeart, setIsHeart] = useState(false);
   let slug = history.location.pathname;
   const post = useSelector((state) => state.PostDetailReducer.postDetail);
   const errors = useSelector((state) => state.PostDetailReducer.errors);
@@ -46,11 +46,10 @@ const Detail = () => {
 
   useEffect(() => {
     Prism.highlightAll();
+    if (post !== null) {
+      document.title = post.title;
+    }
   }, [post]);
-
-  useEffect(() => {
-    handleCheckHeart();
-  }, []);
 
   useEffect(() => {
     if (newComment !== null) {
@@ -74,71 +73,51 @@ const Detail = () => {
     );
   };
 
-  const handleCheckHeart = () => {
-    if (localStorage.getItem('LIKE')) {
-      const { path, like } = JSON.parse(localStorage.getItem('LIKE'));
-      console.log(path, like);
-      if (path === slug && like == true) {
-        setIsHeart(true);
-        return (
-          <Box className={`${classes.iconContainerHeart} container-heart`}>
-            <FavoriteBorderIcon className={classes.iconHeart} />
-          </Box>
-        );
-      }
-    }
-  };
-
-  const handleClickHeart = () => {
-    if (isHeart === true) {
-      localStorage.removeItem('LIKE');
-      setIsHeart(false);
-    } else {
-      let save = {
-        path: slug,
-        like: true,
-      };
-      localStorage.setItem('LIKE', JSON.stringify(save));
-      setIsHeart(true);
-    }
-  };
-
   if (errors) {
     return <PageNotFound />;
   }
   return (
-    <div className={classes.bgColor}>
-      <div className={classes.container}>
-        <div className={classes.root}>
-          <Grid container spacing={0}>
-            <Grid item xs={1}>
-              <PostAction slug={slug} logo={logo} />
-            </Grid>
-            <Grid item xs={10}>
-              <Box className={classes.titleContainer}>
-                <Typography className={classes.title}>{post?.title}</Typography>
-              </Box>
-              <Box className={classes.authorContainer}>
-                <Box className={classes.boxName}>
-                  <Typography className={classes.date}>
-                    {handleRenderDate(post?.date)}
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
+      <div className={classes.bgColor}>
+        <div className={classes.container}>
+          <div className={classes.root}>
+            <Grid container spacing={0}>
+              <Grid item xs={1}>
+                <PostAction slug={slug} logo={logo} />
+              </Grid>
+              <Grid item xs={10}>
+                <Box className={classes.titleContainer}>
+                  <Typography className={classes.title}>
+                    {post?.title}
                   </Typography>
                 </Box>
-              </Box>
-              <Box className={classes.contentContainer}>
-                <Typography className={classes.contents}>
-                  {post?.text ? parse(post?.text) : null}
-                </Typography>
-              </Box>
-              <div className={classes.hr}></div>
+                <Box className={classes.authorContainer}>
+                  <Box className={classes.boxName}>
+                    <Typography className={classes.date}>
+                      {handleRenderDate(post?.date)}
+                    </Typography>
+                  </Box>
+                </Box>
+                <Box className={classes.contentContainer}>
+                  <Typography className={classes.contents}>
+                    {post?.text ? parse(post?.text) : null}
+                  </Typography>
+                </Box>
+                <div className={classes.hr}></div>
+              </Grid>
+              <Grid item xs={1}></Grid>
             </Grid>
-            <Grid item xs={1}></Grid>
-          </Grid>
+          </div>
         </div>
+        <Comments comments={post?.comments} />
+        <Relevant />
       </div>
-      <Comments comments={post?.comments} />
-      <Relevant />
-    </div>
+    </motion.div>
   );
 };
 

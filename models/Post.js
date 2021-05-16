@@ -30,6 +30,10 @@ const PostSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  like: {
+    type: Number,
+    default: 0,
+  },
   comments: [
     {
       name: {

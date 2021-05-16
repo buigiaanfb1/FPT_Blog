@@ -24,7 +24,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   wrapperContentAll: {
-    padding: '30px 10px 10px 0px',
+    padding: '15px 10px 10px 0px',
     cursor: 'pointer',
   },
 
@@ -49,7 +49,8 @@ export const useStyles = makeStyles((theme) => ({
   description: {
     fontSize: '16px',
     lineHeight: '26px',
-    color: '#323947',
+    color: '#000',
+    opacity: '0.7',
     fontWeight: '500',
     letterSpacing: '0.4px',
   },
@@ -68,7 +69,7 @@ export const useStyles = makeStyles((theme) => ({
     lineHeight: '34px',
     letterSpacing: '0px',
     color: '#121212',
-    marginBottom: '16px',
+    marginBottom: '0.5rem',
   },
 
   btnContainer: {
@@ -88,5 +89,35 @@ export const useStyles = makeStyles((theme) => ({
 
   link: {
     textDecoration: 'none',
+  },
+
+  reaction: {
+    display: 'flex',
+    marginTop: '1rem',
+  },
+
+  reactionAllPost: {
+    display: 'flex',
+    marginTop: '0.5rem',
+  },
+
+  reactionItem: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: '2rem',
+    '& svg': {
+      fontSize: '20px',
+      color: '#000',
+      opacity: '0.4',
+    },
+  },
+
+  analyzeReaction: {
+    fontSize: '14px',
+    fontWeight: '',
+    color: '#000',
+    opacity: '0.4',
+    marginLeft: '0.5rem',
   },
 }));

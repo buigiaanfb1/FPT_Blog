@@ -4,10 +4,15 @@ import { useStyles } from './styles';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import {
+  putLikeService,
+  putUnlikeService,
+} from '../modules/services/DetailServices';
 
 const PostAction = ({ slug, logo }) => {
   const classes = useStyles();
   const [isHeart, setIsHeart] = useState(false);
+  let putSlug = slug.slice(1);
 
   useEffect(() => {
     handleCheckHeart();
@@ -31,12 +36,13 @@ const PostAction = ({ slug, logo }) => {
   const handleClickHeart = () => {
     if (isHeart === true) {
       let heartUserLocal = JSON.parse(localStorage.getItem('LIKE'));
-      console.log(heartUserLocal);
       for (let i = 0; i < heartUserLocal.length; i++) {
         if (heartUserLocal[i].path === slug) {
           heartUserLocal.splice(i, 1);
           setIsHeart(false);
           let newHeartUserLocal = [...heartUserLocal];
+          // Axios unlike lên db
+          putUnlikeService({ putSlug });
           localStorage.setItem('LIKE', JSON.stringify(newHeartUserLocal));
           return;
         }
@@ -45,7 +51,8 @@ const PostAction = ({ slug, logo }) => {
       if (localStorage.getItem('LIKE')) {
         // Dành cho người cũ vào web parse ra push new like vào mảng
         let heartUserLocal = JSON.parse(localStorage.getItem('LIKE'));
-        console.log(heartUserLocal);
+        // Axios like lên db
+        putLikeService({ putSlug });
         let save = {
           path: slug,
           like: 'true',
@@ -60,6 +67,8 @@ const PostAction = ({ slug, logo }) => {
           path: slug,
           like: 'true',
         };
+        // Axios like lên db
+        putLikeService({ putSlug });
         arrLocal.push(save);
         localStorage.setItem('LIKE', JSON.stringify(arrLocal));
         setIsHeart(true);
@@ -102,4 +111,4 @@ const PostAction = ({ slug, logo }) => {
   );
 };
 
-export default PostAction;
+export default React.memo(PostAction);

@@ -78,3 +78,30 @@ li {
   cursor: pointer;
   background-color: rgba(220, 24, 24, 0.1);
 }
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 100%;
+}
+
+/* Track */
+*::-webkit-scrollbar-track {
+  background: #000;
+}
+
+/* Handle */
+*::-webkit-scrollbar-thumb {
+  background: #8c00ff;
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+  background: #8c00ff;
+}
+
+.linear-body {
+  background-image: url(./assets/linearGradient.png);
+  /* background-size: cover; */
+  background-attachment: fixed;
+  background-position: 100% 130%;
+}

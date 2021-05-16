@@ -1,17 +1,22 @@
 import { Box, Button, Grid, Typography } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useStyles } from './styles';
 import { Link } from 'react-router-dom';
-import { Image } from 'cloudinary-react';
-
-import parse from 'html-react-parser';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons';
+import { motion } from 'framer-motion';
+import { pageAnimation } from '../../../common/animation';
 
 const Home = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const posts = useSelector((state) => state.PostsReducer.posts);
   const [limit, setLimit] = useState(7);
+
+  useEffect(() => {
+    document.title = 'Code is easy - ARxV Vietnam';
+  }, []);
 
   const handleRenderFirstPost = () => {
     if (posts && posts.length > 0) {
@@ -42,6 +47,20 @@ const Home = () => {
                       <Typography className={classes.description}>
                         {posts[i].summary}
                       </Typography>
+                      <Box className={classes.reaction}>
+                        <Box className={classes.reactionItem}>
+                          <FontAwesomeIcon icon={faHeart} />
+                          <Typography className={classes.analyzeReaction}>
+                            {posts[i].like}
+                          </Typography>
+                        </Box>
+                        <Box className={classes.reactionItem}>
+                          <FontAwesomeIcon icon={faComment} />
+                          <Typography className={classes.analyzeReaction}>
+                            {posts[i].comments.length}
+                          </Typography>
+                        </Box>
+                      </Box>
                     </Box>
                   </Grid>
                 </Grid>
@@ -84,6 +103,20 @@ const Home = () => {
                             ? post.summary.slice(0, 127) + '...'
                             : post.summary}
                         </Typography>
+                        <Box className={classes.reactionAllPost}>
+                          <Box className={classes.reactionItem}>
+                            <FontAwesomeIcon icon={faHeart} />
+                            <Typography className={classes.analyzeReaction}>
+                              {post.like}
+                            </Typography>
+                          </Box>
+                          <Box className={classes.reactionItem}>
+                            <FontAwesomeIcon icon={faComment} />
+                            <Typography className={classes.analyzeReaction}>
+                              {post.comments.length}
+                            </Typography>
+                          </Box>
+                        </Box>
                       </Box>
                     </Grid>
                   </Grid>
@@ -97,30 +130,37 @@ const Home = () => {
   };
 
   return (
-    <Box className={classes.container}>
-      <div className={classes.root}>
-        <Grid container spacing={3}>
-          <Grid container item xs={12} spacing={0}>
-            {handleRenderFirstPost()}
+    <motion.div
+      variants={pageAnimation}
+      initial="hidden"
+      animate="show"
+      exit="exit"
+    >
+      <Box className={classes.container}>
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+            <Grid container item xs={12} spacing={0}>
+              {handleRenderFirstPost()}
+            </Grid>
+            {handleRenderAllPosts()}
           </Grid>
-          {handleRenderAllPosts()}
-        </Grid>
-      </div>
-      <Box className={classes.btnContainer}>
-        {limit < posts.length ? (
-          <Button
-            variant="contained"
-            color="secondary"
-            className={classes.xemThemBtn}
-            onClick={() => setLimit(limit + 6)}
-          >
-            Xem thêm
-          </Button>
-        ) : (
-          ''
-        )}
+        </div>
+        <Box className={classes.btnContainer}>
+          {limit < posts.length ? (
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.xemThemBtn}
+              onClick={() => setLimit(limit + 6)}
+            >
+              Xem thêm
+            </Button>
+          ) : (
+            ''
+          )}
+        </Box>
       </Box>
-    </Box>
+    </motion.div>
   );
 };
 

@@ -17,7 +17,6 @@ const AdminTemplate = () => {
   }, []);
 
   if (images.length > 0) {
-    console.log(images);
     dispatch({
       type: MOVE_IMAGES_TO_REDUCER,
       payload: images,
@@ -33,12 +32,10 @@ const AdminTemplate = () => {
 
     openUploadWidget(uploadOptions, (error, photos) => {
       if (!error) {
-        console.log(photos);
         if (photos.event === 'success') {
           setImages([...images, photos.info.public_id]);
         }
       } else {
-        console.log(error);
       }
     });
   };

@@ -3,6 +3,7 @@ import FptShare from '../layouts/HomeTemplate/FptShare';
 import Frontend from '../layouts/HomeTemplate/Frontend';
 import Backend from '../layouts/HomeTemplate/Backend';
 import Home from './../layouts/HomeTemplate/Home';
+import Discussion from './../layouts/HomeTemplate/Discussion';
 export const routesHome = [
   {
     exact: true,

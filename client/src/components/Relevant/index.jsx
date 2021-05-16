@@ -71,4 +71,4 @@ const Relevant = () => {
   );
 };
 
-export default Relevant;
+export default React.memo(Relevant);

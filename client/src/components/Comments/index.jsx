@@ -125,9 +125,7 @@ const Comments = ({ comments }) => {
 
   return (
     <div className={classes.container}>
-      <Typography className={classes.titleDiscussion}>
-        Bình luận({comments?.length})
-      </Typography>
+      <Typography className={classes.titleDiscussion}>Comments</Typography>
       <Box className={classes.userComment}>
         <div className={classes.root}>
           <Grid container spacing={5}>

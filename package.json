@@ -18,11 +18,13 @@
     "config": "^3.3.6",
     "express": "^4.17.1",
     "express-validator": "^6.10.1",
+    "framer-motion": "^4.1.16",
     "gravatar": "^1.8.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.7",
     "prismjs": "^1.23.0",
-    "request": "^2.88.2"
+    "request": "^2.88.2",
+    "sweetalert2": "^11.0.0"
   },
   "devDependencies": {
     "concurrently": "^6.0.2",

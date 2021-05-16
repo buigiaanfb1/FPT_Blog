@@ -8,8 +8,21 @@ import ScrollToTop from './common/ScrollToTop';
 import { useDispatch, useSelector } from 'react-redux';
 import { GET_ALL_POSTS_REQUESTED_SAGA } from './layouts/HomeTemplate/Home/modules/redux/constants';
 import AdminTemplate from './layouts/AdminTemplate';
+import { AnimatePresence } from 'framer-motion';
+import { Box, makeStyles } from '@material-ui/core';
+import TogetherUnite from './components/TogetherUnite';
+
+const useStyles = makeStyles((theme) => ({
+  modal: {
+    position: 'fixed',
+    bottom: '2rem',
+    right: '2rem',
+    zIndex: '9999999',
+  },
+}));
 
 function App() {
+  const classes = useStyles();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch({
@@ -33,10 +46,19 @@ function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <Switch>
-        <Route exact={true} path="/admin/dashboard" component={AdminTemplate} />
-        {showLayoutHome(routesHome)}
-      </Switch>
+      <AnimatePresence exitBeforeEnter>
+        <Box className={classes.modal}>
+          <TogetherUnite />
+        </Box>
+        <Switch>
+          <Route
+            exact={true}
+            path="/admin/dashboard"
+            component={AdminTemplate}
+          />
+          {showLayoutHome(routesHome)}
+        </Switch>
+      </AnimatePresence>
     </BrowserRouter>
   );
 }

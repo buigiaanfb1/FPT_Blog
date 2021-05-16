@@ -6,6 +6,9 @@ const app = express();
 
 const Post = require('./../../models/Post');
 
+// @route   POST api/posts
+// @desc    POST new post to page
+// @access  Public
 router.post(
   '/',
   [
@@ -95,7 +98,8 @@ router.post(
       };
       const post = await Post.findOneAndUpdate(
         { slug: req.params.slug },
-        { $push: { comments: newComment } }
+        { $push: { comments: newComment } },
+        { new: true }
       );
       if (!post) return res.status(500).send('Không tìm thấy bài viết');
       res.json(post);
@@ -116,6 +120,42 @@ router.get('/comments/:slug', async (req, res) => {
     });
     if (!posts) return res.status(500).send('Không tìm thấy bài viết');
     res.json(posts.comments);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// @route   PUT api/posts/like/:slug
+// @desc    Like a post
+// @access  Public
+router.put('/like/:slug', async (req, res) => {
+  try {
+    const post = await Post.findOne({
+      slug: req.params.slug,
+    });
+    if (!post) return res.status(500).send('Không tìm thấy bài viết');
+    post.like += 1;
+    await post.save();
+    res.json(post);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
+});
+
+// @route   PUT api/posts/unlike/:slug
+// @desc    Like a post
+// @access  Public
+router.put('/unlike/:slug', async (req, res) => {
+  try {
+    const post = await Post.findOne({
+      slug: req.params.slug,
+    });
+    if (!post) return res.status(500).send('Không tìm thấy bài viết');
+    post.like -= 1;
+    await post.save();
+    res.json(post);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');

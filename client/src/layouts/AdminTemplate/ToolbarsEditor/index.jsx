@@ -13,7 +13,6 @@ const ToolbarsEditor = () => {
     text: '',
     thumbnail: '',
   });
-  console.log(content);
   const classes = useStyles();
   let data;
   const handleEditorChange = (e) => {
@@ -50,7 +49,6 @@ const ToolbarsEditor = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { data, status } = await postDataAxios();
-    console.log(data);
   };
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
