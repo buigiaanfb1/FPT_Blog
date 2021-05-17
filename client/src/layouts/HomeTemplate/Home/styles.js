@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 export const useStyles = makeStyles((theme) => ({
   container: {
     maxWidth: '1120px',
-    margin: '5rem auto 2rem auto',
+    margin: '3rem auto 2rem auto',
   },
   root: {
     flexGrow: 1,

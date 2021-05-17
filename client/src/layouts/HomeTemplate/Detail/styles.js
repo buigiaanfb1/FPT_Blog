@@ -122,5 +122,8 @@ export const useStyles = makeStyles((theme) => ({
 
   contents: {
     fontSize: 'inherit',
+    '& a': {
+      wordBreak: 'break-all',
+    },
   },
 }));

@@ -10,9 +10,10 @@ const app = express();
 connectDB();
 
 // Init Middleware
+// enable ssl redirect
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 app.use(express.json({ extended: false }));
 app.use(cors());
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 // Define Route
 app.use('/api/posts', require('./routes/api/posts'));

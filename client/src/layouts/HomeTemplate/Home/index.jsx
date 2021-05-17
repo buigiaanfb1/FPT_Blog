@@ -17,7 +17,7 @@ const Home = () => {
   const [limit, setLimit] = useState(7);
 
   useEffect(() => {
-    document.title = 'Code is easy - ARxV Vietnam';
+    document.title = 'Chia sẻ IT Dev Việt Nam';
   }, []);
 
   const handleRenderFirstPost = () => {
