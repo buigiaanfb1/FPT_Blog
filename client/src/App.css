@@ -1,5 +1,4 @@
 * {
-  padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
@@ -108,6 +107,6 @@ li {
   background-attachment: fixed;
 }
 
-a {
-  word-break: break-all;
+.linear-body-phone {
+  background-color: rgba(170, 149, 240, 0.9);
 }

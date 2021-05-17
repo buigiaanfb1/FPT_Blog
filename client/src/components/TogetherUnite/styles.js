@@ -9,7 +9,6 @@ export const useStyles = makeStyles((theme) => ({
   paper: {
     backgroundColor: 'transparent',
     width: '80%',
-    maxHeight: '80%',
     outline: 'none',
   },
 
@@ -28,8 +27,27 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
 
+  containerButtonExit: {
+    position: 'fixed',
+    top: '0.5rem',
+    left: '0.5rem',
+    zIndex: '9999',
+    background:
+      '-webkit-linear-gradient(left top, rgba(216,15,233, 0.5) 0%, rgba(242,36,23, 0.5) 100%)',
+    border: 'none',
+    width: '40px',
+    height: '40px',
+    borderRadius: '100%',
+    cursor: 'pointer',
+    transition: 'all 0.3s',
+    '&:hover': {
+      background:
+        '-webkit-linear-gradient(left top, rgba(216,15,233, 0.7) 0%, rgba(242,36,23, 0.7) 100%)',
+    },
+  },
+
   button: {
-    fontSize: '34px',
+    fontSize: '30px',
     color: '#e3e6ec',
   },
 }));

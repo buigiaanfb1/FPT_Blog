@@ -5,10 +5,13 @@ import Fade from '@material-ui/core/Fade';
 import { useStyles } from './styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComments } from '@fortawesome/free-regular-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import Discussion from '../../layouts/HomeTemplate/Discussion';
+import { useMediaQuery } from 'react-responsive';
 
 const TogetherUnite = () => {
   const classes = useStyles();
+  const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -41,7 +44,24 @@ const TogetherUnite = () => {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
+          <div
+            className={classes.paper}
+            style={{
+              height: `${!isMobile ? 60 : 85}vh`,
+              width: `${!isMobile ? 80 : 95}vw`,
+            }}
+          >
+            {open && isMobile ? (
+              <button
+                type="button"
+                onClick={handleClose}
+                className={classes.containerButtonExit}
+              >
+                <FontAwesomeIcon icon={faTimes} className={classes.button} />
+              </button>
+            ) : (
+              ''
+            )}
             <Discussion />
           </div>
         </Fade>

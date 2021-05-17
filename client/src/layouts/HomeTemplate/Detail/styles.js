@@ -125,5 +125,8 @@ export const useStyles = makeStyles((theme) => ({
     '& a': {
       wordBreak: 'break-all',
     },
+    '& img': {
+      maxWidth: '100%',
+    },
   },
 }));

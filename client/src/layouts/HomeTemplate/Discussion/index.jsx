@@ -47,20 +47,16 @@ function SignIn() {
 }
 
 function SignOut() {
-  const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
   const classes = useStyles();
   return (
-    <button
-      onClick={() => auth.signOut()}
-      className={classes.signOutContainer}
-      style={{ top: `${isMobile ? 1 : 2}rem`, right: `${isMobile ? 1 : 2}rem` }}
-    >
+    <button onClick={() => auth.signOut()} className={classes.signOutContainer}>
       <FontAwesomeIcon icon={faSignOutAlt} className={classes.buttonSignOut} />
     </button>
   );
 }
 
 function ChatRoom({ user }) {
+  const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
   // Gắn với thẻ span dưới cùng để ScrollIntoView
   const dummy = useRef();
   const classes = useStyles();
@@ -101,7 +97,12 @@ function ChatRoom({ user }) {
   };
   return (
     <div className={classes.bigContainer}>
-      <div className={classes.container}>
+      <div
+        className={classes.container}
+        style={{
+          height: `${!isMobile ? 60 : 75}vh`,
+        }}
+      >
         {messages &&
           messages.map((message) => {
             return <ChatMessage key={message.id} message={message} />;
@@ -147,6 +148,7 @@ function ChatRoom({ user }) {
 
 function ChatMessage(props) {
   const classes = useStyles();
+  const isMobile = useMediaQuery({ query: '(max-width: 600px)' });
   const { user, body, uid, photoURL, createdAt } = props.message;
   console.log(props.message);
   // Kiểm tra cái nào của client cái nào của other users
@@ -164,7 +166,14 @@ function ChatMessage(props) {
       <img src={photoURL || 'https://i.imgur.com/rFbS5ms.png'} />
       <div className={classes.nameTextContainer}>
         <p className={classes.name}>{messageClass ? 'You' : user}</p>
-        <div className={`${classes.bodyContainer} linear-body`}>
+        <div
+          className={`${classes.bodyContainer} ${
+            !isMobile ? `linear-body` : `linear-body-phone`
+          }`}
+          style={{
+            maxWidth: `${!isMobile ? 400 : 200}px`,
+          }}
+        >
           <p>{body}</p>
         </div>
       </div>

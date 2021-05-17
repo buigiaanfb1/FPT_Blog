@@ -11,11 +11,6 @@ export const useStyles = makeStyles((theme) => ({
     position: 'relative',
   },
 
-  // containerComment: {
-  //   maxWidth: '880px',
-  //   margin: '0 auto',
-  // },
-
   allContainer: {
     display: 'flex',
     alignItems: 'center',
