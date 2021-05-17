@@ -110,3 +110,11 @@ li {
 .linear-body-phone {
   background-color: rgba(170, 149, 240, 0.9);
 }
+
+.contentContainer p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 1em;
+  margin-inline-end: 1em;
+}

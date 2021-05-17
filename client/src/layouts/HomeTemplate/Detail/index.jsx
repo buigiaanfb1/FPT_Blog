@@ -114,7 +114,7 @@ const Detail = () => {
                     </Typography>
                   </Box>
                 </Box>
-                <Box className={classes.contentContainer}>
+                <Box className={`${classes.contentContainer} contentContainer`}>
                   <Typography className={classes.contents}>
                     {post?.text ? parse(post?.text) : null}
                   </Typography>
