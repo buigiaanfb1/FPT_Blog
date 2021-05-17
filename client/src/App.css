@@ -107,3 +107,7 @@ li {
   background-size: cover;
   background-attachment: fixed;
 }
+
+a {
+  word-break: break-all;
+}

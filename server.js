@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const path = require('path');
 const cors = require('cors');
+const enforce = require('express-sslify');
 
 const app = express();
 
@@ -11,6 +12,7 @@ connectDB();
 // Init Middleware
 app.use(express.json({ extended: false }));
 app.use(cors());
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 // Define Route
 app.use('/api/posts', require('./routes/api/posts'));
