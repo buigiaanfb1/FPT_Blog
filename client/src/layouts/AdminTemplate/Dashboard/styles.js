@@ -90,4 +90,25 @@ export const useStyles = makeStyles((theme) => ({
   buttonUpload: {
     // marginTop: '5rem 0',
   },
+
+  containerIcon: {
+    padding: '0.5rem 0.5rem',
+    display: 'flex',
+    alignItems: 'center',
+    // justifyContent: 'center',
+    cursor: 'pointer',
+  },
+
+  textIcon: {
+    fontSize: '18px',
+    lineHeight: '18px',
+    fontWeight: '500',
+    opacity: '0.9',
+  },
+
+  icon: {
+    fontSize: '26px',
+    opacity: '0.9',
+    marginRight: '0.5rem',
+  },
 }));

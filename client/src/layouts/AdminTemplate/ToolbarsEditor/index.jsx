@@ -15,7 +15,6 @@ const ToolbarsEditor = () => {
   const [content, setContent] = useState({
     title: '',
     summary: '',
-    slug: '',
     text: '',
     thumbnail: '',
   });
@@ -95,16 +94,6 @@ const ToolbarsEditor = () => {
         fullWidth
         name="summary"
         placeholder="Nội dung tóm tắt"
-        onChange={(e) => handleChange(e)}
-      />
-      <br />
-      <h3 className={classes.title}>Slug</h3>
-      <TextField
-        id="outlined-basic"
-        variant="outlined"
-        fullWidth
-        name="slug"
-        placeholder="URI ex: how-to-become-a-real-fish"
         onChange={(e) => handleChange(e)}
       />
       <br />

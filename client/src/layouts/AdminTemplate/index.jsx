@@ -10,6 +10,7 @@ import { MOVE_IMAGES_TO_REDUCER } from './modules/constants';
 
 const AdminTemplate = () => {
   const [images, setImages] = useState([]);
+  let observable = 1;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -34,6 +35,7 @@ const AdminTemplate = () => {
       if (!error) {
         if (photos.event === 'success') {
           setImages([...images, photos.info.public_id]);
+          fetchPhotos('image', setImages);
         }
       } else {
       }

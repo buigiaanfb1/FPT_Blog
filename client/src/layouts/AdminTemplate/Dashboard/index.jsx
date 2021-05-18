@@ -19,6 +19,9 @@ import { useStyles } from './styles';
 import ToolbarsEditor from './../ToolbarsEditor';
 import { useHistory } from 'react-router-dom';
 import { Button } from '@material-ui/core';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import EditIcon from '@material-ui/icons/Edit';
+import EditPost from '../EditPost';
 
 function Copyright() {
   return (
@@ -37,6 +40,7 @@ const Dashboard = (props) => {
   const classes = useStyles();
   let history = useHistory();
   const [open, setOpen] = React.useState(true);
+  const [changeTab, setChangeTab] = React.useState('add');
 
   useMemo(() => {
     if (!localStorage.getItem('ADMIN')) {
@@ -66,7 +70,8 @@ const Dashboard = (props) => {
       );
     }
   };
-  const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  const handleRenderChangeTab = () => {};
 
   return (
     <div className={classes.root}>
@@ -117,19 +122,39 @@ const Dashboard = (props) => {
           </IconButton>
         </div>
         <Divider />
+        <Box
+          className={classes.containerIcon}
+          onClick={() => setChangeTab('add')}
+        >
+          <AddBoxIcon className={classes.icon} />
+          <Typography className={classes.textIcon}>Thêm bài viết</Typography>
+        </Box>
+        <Box
+          className={classes.containerIcon}
+          onClick={() => setChangeTab('edit')}
+        >
+          <EditIcon className={classes.icon} />
+          <Typography className={classes.textIcon}>
+            Chỉnh sửa bài viết
+          </Typography>
+        </Box>
       </Drawer>
       <main className={classes.content}>
         <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <Box className={classes.wrapperButton}>
-                <Typography className={classes.noteUpload}>
-                  Gửi ảnh lên Cloudinary
-                </Typography>
-                {handleCheckUpload()}
-              </Box>
-              <ToolbarsEditor />
-            </Grid>
+          <Grid container>
+            {changeTab === 'add' ? (
+              <Grid item xs={12}>
+                <Box className={classes.wrapperButton}>
+                  <Typography className={classes.noteUpload}>
+                    Gửi ảnh lên Cloudinary
+                  </Typography>
+                  {handleCheckUpload()}
+                </Box>
+                <ToolbarsEditor />
+              </Grid>
+            ) : (
+              <EditPost />
+            )}
           </Grid>
           <Box pt={4}>
             <Copyright />

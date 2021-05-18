@@ -25,7 +25,7 @@ const ModalGallery = (props) => {
     if (images.length > 0) {
       return images.map((image, index) => {
         return (
-          <>
+          <Box key={index} style={{ display: 'inline-block' }}>
             <Image
               onClick={() => {
                 props.handleImage(image.public_id);
@@ -40,7 +40,7 @@ const ModalGallery = (props) => {
               width="150px"
               height="150px"
             />
-          </>
+          </Box>
         );
       });
     } else {

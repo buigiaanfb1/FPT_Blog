@@ -41,7 +41,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   bodyContainer: {
     // backgroundColor: 'plum',
-    padding: '0.2rem 0.7rem',
+    padding: '0.3rem 0.7rem',
     borderRadius: '10px',
     maxWidth: '400px',
     wordBreak: 'break-word',
@@ -133,5 +133,9 @@ export const useStyles = makeStyles((theme) => ({
   buttonSignOut: {
     fontSize: '34px',
     color: '#e3e6ec',
+  },
+
+  textByUsers: {
+    fontSize: '16px',
   },
 }));

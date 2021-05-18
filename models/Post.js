@@ -19,7 +19,6 @@ const PostSchema = new Schema({
   },
   slug: {
     type: String,
-    required: true,
   },
   thumbnail: {
     type: String,

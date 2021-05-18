@@ -1,6 +1,7 @@
 const express = require('express');
 const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
+const slugify = require('slugify');
 const router = express.Router();
 const app = express();
 const auth = require('./../../middleware/auth');
@@ -18,7 +19,6 @@ router.post(
     check('title', 'Title is required').not().isEmpty(),
     check('summary', 'Summary is required').not().isEmpty(),
     check('thumbnail', 'Thumbnail is required').not().isEmpty(),
-    check('slug', 'Slug is required').not().isEmpty(),
     check('text', 'Text is required').not().isEmpty(),
   ],
   async (req, res) => {
@@ -26,9 +26,14 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { title, summary, text, slug, thumbnail } = req.body;
+    const { title, summary, text, thumbnail } = req.body;
     const admin = await Admin.findById(req.admin.id).select('-password');
-    const { avatar, name } = admin.avatar;
+    //Slug
+    const slug = slugify(title, {
+      remove: /[*+~.^#&$%()'"!:@]/g,
+      lower: true,
+      locale: 'vi',
+    });
     // Init new object
     let post = new Post({
       title,

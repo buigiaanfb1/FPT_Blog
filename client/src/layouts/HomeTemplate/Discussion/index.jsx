@@ -174,7 +174,7 @@ function ChatMessage(props) {
             maxWidth: `${!isMobile ? 400 : 200}px`,
           }}
         >
-          <p>{body}</p>
+          <Typography className={classes.textByUsers}>{body}</Typography>
         </div>
       </div>
     </div>
