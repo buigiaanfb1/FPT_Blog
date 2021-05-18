@@ -57,7 +57,6 @@ export const useStyles = makeStyles((theme) => ({
   imgAuthor: {
     width: '48px',
     height: '48px',
-    height: '100%',
     borderRadius: '2000px',
   },
 }));

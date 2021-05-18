@@ -4,6 +4,7 @@ const gravatar = require('gravatar');
 const router = express.Router();
 const app = express();
 const auth = require('./../../middleware/auth');
+const Admin = require('./../../models/Admin');
 
 const Post = require('./../../models/Post');
 
@@ -26,12 +27,15 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
     const { title, summary, text, slug, thumbnail } = req.body;
+    const admin = await Admin.findById(req.admin.id).select('-password');
+    const { avatar, name } = admin.avatar;
     // Init new object
     let post = new Post({
       title,
       summary,
       text,
       thumbnail,
+      admin,
       slug,
     });
     post.save();

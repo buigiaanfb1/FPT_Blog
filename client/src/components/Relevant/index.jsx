@@ -18,9 +18,9 @@ const Relevant = () => {
         randomNumber,
         randomNumber + 3
       );
-      return arrPostRandom.map((post) => {
+      return arrPostRandom.map((post, index) => {
         return (
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4} key={index}>
             <Link to={`/${post.slug}`} className={classes.link}>
               <Box className={classes.wrapperContentAll}>
                 <Grid container spacing={0}>

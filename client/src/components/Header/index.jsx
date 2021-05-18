@@ -65,13 +65,13 @@ const Header = () => {
   return (
     <div className={classes.container}>
       <Grid container spacing={0}>
-        <Grid item xs={2} spacing={0}>
+        <Grid item xs={2}>
           <Link to="/">
             <img src={logo} width="50px" />
           </Link>
         </Grid>
         {!isMobile ? (
-          <Grid item xs={10} spacing={0}>
+          <Grid item xs={10}>
             <Box className={classes.navContainer}>
               <NavLink
                 to="/fpt"

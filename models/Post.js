@@ -14,9 +14,8 @@ const PostSchema = new Schema({
     type: String,
     required: true,
   },
-  name: {
-    type: String,
-    default: 'Gia An',
+  admin: {
+    type: Object,
   },
   slug: {
     type: String,

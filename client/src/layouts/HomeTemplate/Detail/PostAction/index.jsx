@@ -9,10 +9,11 @@ import {
   putUnlikeService,
 } from '../modules/services/DetailServices';
 
-const PostAction = ({ slug, logo }) => {
+const PostAction = ({ slug, logo, admin = null }) => {
   const classes = useStyles();
   const [isHeart, setIsHeart] = useState(false);
   let putSlug = slug.slice(1);
+  console.log(admin);
 
   useEffect(() => {
     handleCheckHeart();
@@ -82,7 +83,10 @@ const PostAction = ({ slug, logo }) => {
       <Box className={classes.item}>
         <Box className={classes.boxAvatars}>
           <Box className={classes.containerAvatars}>
-            <img src={logo} className={classes.imgAuthor} />
+            <img
+              src={admin ? admin.avatar : logo}
+              className={classes.imgAuthor}
+            />
           </Box>
         </Box>
         <Box style={{ marginTop: '1.5rem' }}>
@@ -99,10 +103,19 @@ const PostAction = ({ slug, logo }) => {
           <Box
             className={`${classes.iconContainerFacebook} container-facebook`}
           >
-            <FontAwesomeIcon
-              icon={faFacebookF}
-              className={`${classes.iconFacebook} ${classes.icon}`}
-            />
+            <a
+              target="_blank"
+              href={`${
+                admin
+                  ? admin.facebook
+                  : 'https://www.facebook.com/OneTwoThreeABCD/'
+              }`}
+            >
+              <FontAwesomeIcon
+                icon={faFacebookF}
+                className={`${classes.iconFacebook} ${classes.icon}`}
+              />
+            </a>
           </Box>
         </Box>
       </Box>

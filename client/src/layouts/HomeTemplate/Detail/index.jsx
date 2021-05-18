@@ -90,7 +90,7 @@ const Detail = () => {
             <Grid container spacing={0}>
               {!isMobile ? (
                 <Grid item xs={1}>
-                  <PostAction slug={slug} logo={logo} />
+                  <PostAction slug={slug} logo={logo} admin={post?.admin} />
                 </Grid>
               ) : (
                 ''

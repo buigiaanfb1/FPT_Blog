@@ -10,6 +10,9 @@ const AdminScheme = new mongoose.Schema({
     required: true,
     unique: true,
   },
+  facebook: {
+    type: String,
+  },
   password: {
     type: String,
     required: true,
