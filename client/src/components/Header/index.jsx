@@ -1,4 +1,4 @@
-import { Box, Grid } from '@material-ui/core';
+import { Box, Grid, Typography } from '@material-ui/core';
 import React, { useState } from 'react';
 import { useStyles } from './styles';
 import logo from './../../assets/logo.png';
@@ -16,12 +16,18 @@ const Header = () => {
     return (
       <Grid item xs={10} spacing={0}>
         <Box className={classes.barsForPhone} onClick={() => setOpen(!open)}>
+          {/* <Typography className={classes.logoText}>IT BLOG</Typography> */}
           <FontAwesomeIcon icon={faBars} className={classes.iconBars} />
         </Box>
         <>
           <Box
             className={`${open ? classes.wrapperContainerForPhone : ''}`}
             onClick={() => setOpen(!open)}
+          ></Box>
+          <Box
+            className={`${classes.containerBackForPhone} ${
+              open ? classes.activeNavForMobile : ''
+            }`}
           ></Box>
           <Box
             className={`${classes.containerForPhone} ${

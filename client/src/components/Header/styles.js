@@ -48,19 +48,32 @@ export const useStyles = makeStyles({
 
   containerForPhone: {
     position: 'fixed',
-    top: '0',
-    right: '0',
-    width: '70%',
-    height: '270px',
-    borderTopLeftRadius: '35px',
-    // borderTopRightRadius: '50px',
-    borderBottomLeftRadius: '35px',
-    borderBottomRightRadius: '35px',
+    top: '2rem',
+    right: '1rem',
+    width: '60%',
+    height: '230px',
+    borderRadius: '6px',
+    border: '2px solid #000',
     overflowY: 'hidden',
-    transform: 'translateX(100%)',
+    transform: 'translateX(110%)',
     transition: 'all 0.5s ease',
-    backgroundColor: 'rgba(37,36,39,0.95)',
+    backgroundColor: '#fafafa',
     zIndex: '1200 !important',
+  },
+
+  containerBackForPhone: {
+    position: 'fixed',
+    top: '2.25rem',
+    right: '0.8rem',
+    width: '60%',
+    height: '230px',
+    borderRadius: '6px',
+    border: '2px solid #000',
+    overflowY: 'hidden',
+    transform: 'translateX(110%)',
+    transition: 'all 0.5s ease',
+    backgroundColor: '#000',
+    zIndex: '1199 !important',
   },
 
   activeNavForMobile: {
@@ -94,12 +107,12 @@ export const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     padding: '1rem',
-    borderBottom: '2px solid plum',
+    // borderBottom: '2px solid plum',
   },
 
   link: {
-    color: '#fafafa',
-    fontSize: '20px',
+    color: '#000',
+    fontSize: '16px',
     lineHeight: '24px',
     letterSpacing: '1px',
     opacity: '0.8',
@@ -114,5 +127,10 @@ export const useStyles = makeStyles({
     color: 'plum',
     fontWeight: '700',
     opacity: '1',
+  },
+
+  logoText: {
+    fontWeight: '700',
+    fontSize: '24px',
   },
 });
