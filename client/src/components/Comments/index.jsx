@@ -76,9 +76,9 @@ const Comments = ({ comments }) => {
     return comments
       ?.slice(0)
       .reverse()
-      .map((comment) => {
+      .map((comment, index) => {
         return (
-          <Box className={classes.otherUsersComment}>
+          <Box className={classes.otherUsersComment} key={index}>
             <div className={classes.root}>
               <Grid container spacing={0}>
                 <Grid item sm={1} xs={2}>

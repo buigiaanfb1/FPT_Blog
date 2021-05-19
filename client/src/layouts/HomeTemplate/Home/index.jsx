@@ -79,7 +79,7 @@ const Home = () => {
       return posts.slice(0, limit).map((post, index) => {
         if (index > 0) {
           return (
-            <Grid item md={4} sm={6} xs={12} spacing={0}>
+            <Grid item md={4} sm={6} xs={12} spacing={0} key={index}>
               <Link to={`/${post.slug}`} className={classes.link}>
                 <Box className={classes.wrapperContentAll}>
                   <Grid container spacing={0}>
@@ -139,7 +139,7 @@ const Home = () => {
     if (posts && posts.length > 0) {
       return posts.slice(0, limit).map((post, index) => {
         return (
-          <Grid container item md={4} xs={12} spacing={0}>
+          <Grid container item md={4} xs={12} spacing={0} key={index}>
             <Link to={`/${post.slug}`} className={classes.link}>
               <Box className={classes.wrapperContentAll}>
                 <Grid container spacing={0}>

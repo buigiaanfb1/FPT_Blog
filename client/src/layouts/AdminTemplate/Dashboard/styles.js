@@ -107,8 +107,8 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   icon: {
-    fontSize: '26px',
+    fontSize: '32px',
     opacity: '0.9',
-    marginRight: '0.5rem',
+    margin: '0.5rem 1rem',
   },
 }));

@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { useStyles } from './styles';
-import { Button, TextField } from '@material-ui/core';
+import { Box, Button, TextField, Typography } from '@material-ui/core';
 import axios from 'axios';
-import ModalGallery from '../Dashboard/ModalGallery';
+import ModalGallery from './../../layouts/AdminTemplate/Dashboard/ModalGallery';
 import Swal from 'sweetalert2';
 
-const ToolbarsEditor = () => {
+const PostEditorEdit = ({ post }) => {
   let token;
   if (localStorage.getItem('ADMIN')) {
     const local = JSON.parse(localStorage.getItem('ADMIN'));
     token = local.token;
   }
   const [content, setContent] = useState({
-    title: '',
-    summary: '',
-    text: '',
-    thumbnail: '',
+    id: post._id,
+    title: `${post.title}`,
+    summary: `${post.summary}`,
+    text: `${post.text}`,
+    thumbnail: `${post.thumbnail}`,
   });
-  const classes = useStyles();
-  let data;
+
+  console.log(content);
 
   const handleEditorChange = (e) => {
     data = e.target.getContent();
@@ -29,10 +30,10 @@ const ToolbarsEditor = () => {
     });
   };
 
-  const postDataAxios = () => {
+  const putDataAxios = () => {
     return axios({
       url: `/api/posts`,
-      method: 'POST',
+      method: 'PUT',
       data: content,
       headers: {
         'x-auth-token': token,
@@ -58,11 +59,11 @@ const ToolbarsEditor = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data, status } = await postDataAxios();
+      const { data, status } = await putDataAxios();
       if (status === 200) {
         Swal.fire({
           title: 'Thành công',
-          text: 'Bài viết đã được công khai',
+          text: 'Cập nhật thành công',
           icon: 'success',
           confirmButtonText: 'Cool',
         });
@@ -76,35 +77,43 @@ const ToolbarsEditor = () => {
       });
     }
   };
+
+  const classes = useStyles();
+  let data;
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
       <h3 className={classes.title}>Title</h3>
       <TextField
-        id="outlined-basic"
         variant="outlined"
         fullWidth
         name="title"
         placeholder="Tiêu đề"
+        defaultValue={content.title}
         onChange={(e) => handleChange(e)}
       />
       <br />
       <h3 className={classes.title}>Summary</h3>
       <TextField
-        id="outlined-basic"
         variant="outlined"
         fullWidth
         name="summary"
         placeholder="Nội dung tóm tắt"
+        defaultValue={content.summary}
         onChange={(e) => handleChange(e)}
       />
       <br />
       <h3 className={classes.title}>Thumbnail</h3>
-      <ModalGallery handleImage={handleImage} />
+      <Box className={classes.wrapperThumbnail}>
+        <ModalGallery handleImage={handleImage} />
+        <Typography className={classes.textThumbnail}>
+          {content.thumbnail}
+        </Typography>
+      </Box>
       <br />
       <h3 className={classes.title}>Content</h3>
       <Editor
         apiKey="v5o2pa741vownqney7esv5efwtt657k8j38w8k2womugtuyg"
-        initialValue="Made with <3 from Gia An"
+        initialValue={`${post.text}`}
         init={{
           height: 500,
           menubar: true,
@@ -132,4 +141,4 @@ const ToolbarsEditor = () => {
   );
 };
 
-export default ToolbarsEditor;
+export default PostEditorEdit;

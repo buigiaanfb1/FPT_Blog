@@ -11,7 +11,7 @@ const Post = require('./../../models/Post');
 
 // @route   POST api/posts
 // @desc    POST new post to page
-// @access  Public
+// @access  Private
 router.post(
   '/',
   [
@@ -45,6 +45,39 @@ router.post(
     });
     post.save();
     res.json('Create new post successfully');
+  }
+);
+
+// @route   PUT api/posts
+// @desc    PUT update a post
+// @access  Private
+router.put(
+  '/',
+  [
+    auth,
+    check('title', 'Title is required').not().isEmpty(),
+    check('summary', 'Summary is required').not().isEmpty(),
+    check('thumbnail', 'Thumbnail is required').not().isEmpty(),
+    check('text', 'Text is required').not().isEmpty(),
+  ],
+  async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+      const { id, title, summary, text, thumbnail } = req.body;
+      const post = await Post.findByIdAndUpdate(
+        id,
+        { title, summary, text, thumbnail },
+        { new: true }
+      );
+      if (!post) return res.status(500).send('Có lỗi xảy ra vui lòng thử lại');
+      res.json('Cập nhật thành công. Bravoooo!');
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
   }
 );
 
